@@ -33,7 +33,7 @@ void loop()
   if (millis() > 5000 && gps.charsProcessed() < 10)
   {
     Serial.println("No GPS detected");
-    while(true);
+    while(true);　// Crash !!!!!
   }
 }
 
