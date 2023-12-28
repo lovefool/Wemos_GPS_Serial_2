@@ -1,10 +1,10 @@
-// #include <TinyGPS++.h>
-#include <TinyGPSPlus.h>
+#include <TinyGPS++.h>
+// #include <TinyGPSPlus.h>
 #include <SoftwareSerial.h>
 
 // シリアル通信に使用するpinを指定。
-int RXPin = 2;
-int TXPin = 16;
+int RXPin = 2;  // D4
+int TXPin = 16; // D0
 
 int GPSBaud = 9600;
 
@@ -18,6 +18,10 @@ void setup()
 {
   // シリアルポートを9600で起動します
   Serial.begin(9600);
+
+  // Wait for Serial is ready
+  while ( !Serial ) {
+  }
 
   gpsSerial.begin(GPSBaud);
 }
@@ -33,7 +37,7 @@ void loop()
   if (millis() > 5000 && gps.charsProcessed() < 10)
   {
     Serial.println("No GPS detected");
-    while(true);　// Crash !!!!!
+    while(true);
   }
 }
 
